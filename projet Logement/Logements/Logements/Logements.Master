@@ -1,0 +1,190 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Logements.master.cs" Inherits="Logements.Logements" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<meta charset="utf-8"/>
+		<title>Chambres à louer</title>
+		<meta name="generator" content="Bootply"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		<link href="Styles/bootstrap.min.css" rel="stylesheet"/>
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="Styles/styles.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+        <!-- script references -->
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+	    <script src="js/scripts.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+            <nav class="navbar navbar-static">
+                <div class="container">
+                  <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                  </a>
+                  <div class="nav-collapse collase">
+                    <ul class="nav navbar-nav">  
+                      <li><a href="Default.aspx">Accueil</a></li>
+                      <li><a href="category.aspx">Chambres</a></li>
+                      <li><asp:HyperLink ID="AdminPanel" runat="server" NavigateUrl="Admin.aspx" Visible="false">Panneau d'Administration</asp:HyperLink></li>
+                    </ul>
+                    <ul class="nav navbar-right navbar-nav">
+                         <li>
+                         <a href="#"class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#helpMe"></a>
+
+                      </li>       
+                      <li>
+                        <asp:HyperLink runat="server" ID="lnkMembre" Visible="false">
+                            <asp:Label ID="lblMembre" runat="server" CssClass="membreConnecte" Text=""></asp:Label>
+                        </asp:HyperLink>
+                      </li>
+                              
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                          <li><asp:HyperLink ID="lnkConn" runat="server" NavigateUrl="login.aspx">Se connecter</asp:HyperLink></li>
+                          <li><asp:HyperLink ID="lnkIns" runat="server" NavigateUrl="Register.aspx">Inscription</asp:HyperLink></li>
+                          <li><asp:HyperLink ID="lnkAdd" runat="server" NavigateUrl="chambres.aspx" Visible="false">Mes chambres</asp:HyperLink></li>
+                          <li class="divider"></li>
+                          <li><asp:HyperLink ID="lnkPropos" runat="server" NavigateUrl="contact.aspx">À propos</asp:HyperLink></li>
+                          <li><asp:HyperLink ID="lnkDeco" runat="server" NavigateUrl="Default.aspx?deco=y" Visible="false">Déconnexion</asp:HyperLink></li>
+                         </ul>
+                      </li>  
+                    </ul>
+                  </div>		
+                </div>
+            </nav><!-- /.navbar -->
+
+            <header class="masthead">
+              <div class="container">
+                <div class="row">
+                  <div class="col col-sm-6">
+                    <h1>Chambres à louer
+                      <p class="lead">Cégep Chicoutimi</p></h1>
+                  </div>
+                  <div class="col col-sm-6">
+                    <div class="pull-right">
+                        <asp:Image ID="ImageRezz" runat="server" ImageUrl="Images/Rezz.jpg" Height="90"/>
+                      <asp:Image ID="Image1" runat="server" ImageUrl="Images/cegep_logo.jpg" Height="90"/>      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            <!-- Begin Body -->
+            <div class="container">
+	            <div class="row">
+  			            <div class="col col-sm-3 menu">
+              	            <div id="sidebar">
+      			            <ul class="nav nav-stacked">
+                                <li><h3 class="highlight">Logements<i class="glyphicon glyphicon-dashboard pull-right"></i></h3></li>
+				            </ul>
+                                  <nav class="navbar navbar-static menu">  
+                                  <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <ul class="nav nav-stacked">
+                                            <li><a class="accordion-toggle leftMenu" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                                <h3 style="margin:auto;">Résidences</h3>
+                                            </a>
+                                            </li>
+                                            </ul>
+                                        </div>
+                                        <div id="collapseTwo" class="accordion-body collapse">
+                                            <div class="accordion-inner">
+                                              <ul class="nav nav-stacked">
+								            <li><a href="category.aspx?category=simple" class="leftMenu">Simple</a></li>
+								            <li><a href="category.aspx?category=double" class="leftMenu">Double</a></li>
+								            <li><a href="category.aspx?category=studio" class="leftMenu">Studio</a></li>
+
+								
+								            </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </nav>
+                                    <nav class="navbar navbar-static menu">  
+						            <div class="accordion" id="accordion2">
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <ul class="nav nav-stacked">
+                                        <li>
+                                        <a class="accordion-toggle leftMenu" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                                            <h3 style="margin:auto;">Hors Campus</h3>
+                                        </a>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                    <div id="collapseOne" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                          <ul class="nav nav-stacked">
+								            <li><a href="category.aspx?category=chambres" class="leftMenu">Chambres</a></li>
+								            <li><a href="category.aspx?category=112" class="leftMenu">1 1/2</a></li>
+								            <li><a href="category.aspx?category=212" class="leftMenu">2 1/2</a></li>
+								            <li><a href="category.aspx?category=312" class="leftMenu">3 1/2</a></li>
+								            <li><a href="category.aspx?category=412" class="leftMenu">4 1/2</a></li>
+								            <li><a href="category.aspx?category=512" class="leftMenu">5 1/2</a></li>
+								            <li><a href="category.aspx?category=maisons" class="leftMenu">Maisons</a></li>
+								            <li><a href="category.aspx?category=studios" class="leftMenu">Studios</a></li>
+								
+								            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+               	            </div>
+                                        </nav>
+                           </div>
+      		            </div>  
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">                           
+                            </asp:ContentPlaceHolder>
+      	            </div> 
+  	            </div>
+        <br />
+        <nav class="navbar navbar-static footer">
+             Cégep de Chicotuimi | 534 Rue Jacques-Cartier E | 123-456-7897 |
+        </nav><!-- /.navbar -->
+        </div>
+
+        <!-- Fenêtre modale s'ouvrant pour afficher de l'aide -->
+        <div class="modal fade" id="helpMe" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Aide d'Utilisateur</h4>
+                    </div>
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <asp:ContentPlaceHolder ID="helpContent" runat="server">                           
+                                </asp:ContentPlaceHolder>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                            <asp:Button ID="buttonConfirm" runat="server" UseSubmitBehavior="false" CssClass="btn btn-success" OnClick="downloadUserGuide" Text="Télécharger le guide d'Utilisateur" />
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+    </form>
+    <asp:ContentPlaceHolder ID="scripts" runat="server">
+
+        </asp:ContentPlaceHolder>
+</body>
+</html>
+
