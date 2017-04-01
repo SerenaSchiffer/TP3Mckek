@@ -13,5 +13,12 @@ namespace TP3
         {
 
         }
+
+        protected void btnConn_Click(object sender, EventArgs e)
+        {
+            string courriel = txtCourriel.Text;
+            string mdp = txtMDP.Text;
+            Response.Redirect("Default.aspx");
+        }
     }
 }

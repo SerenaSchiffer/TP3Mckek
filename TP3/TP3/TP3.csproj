@@ -70,6 +70,8 @@
     <Content Include="packages.config" />
     <Content Include="Profil.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\styles.css" />
     <Content Include="TP3.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
