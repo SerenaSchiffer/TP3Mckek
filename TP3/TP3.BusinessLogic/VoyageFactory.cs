@@ -98,7 +98,7 @@ namespace TP3.BusinessLogic
                 connexion.Open();
                 MySqlCommand mySqlCmd = connexion.CreateCommand();
 
-                mySqlCmd.CommandText = "SELECT * FROM membre ORDER BY ID";
+                mySqlCmd.CommandText = "SELECT * FROM voyage ORDER BY ID";
 
                 mySqlDataReader = mySqlCmd.ExecuteReader();
 
