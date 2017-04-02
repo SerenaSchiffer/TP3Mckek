@@ -26,7 +26,7 @@ namespace TP3.BusinessLogic
             mySqlCmd.Parameters.Add(new MySqlParameter("@Telephone", membre.Telephone));
             mySqlCmd.Parameters.Add(new MySqlParameter("@Courriel", membre.Courriel));
             mySqlCmd.Parameters.Add(new MySqlParameter("@IsDriver", membre.IsDriver));
-            mySqlCmd.Parameters.Add(new MySqlParameter("@MDP", hashedBytes.ToString()));
+            mySqlCmd.Parameters.Add(new MySqlParameter("@MDP", Encoding.UTF8.GetString(hashedBytes)));
             mySqlCmd.Parameters.Add(new MySqlParameter("@isFumeur", membre.IsFumeur));
             mySqlCmd.Parameters.Add(new MySqlParameter("@isAnimaux", membre.IsAnimaux));
             mySqlCmd.Parameters.Add(new MySqlParameter("@isEquipe", membre.IsEquipe));
@@ -163,7 +163,7 @@ namespace TP3.BusinessLogic
                 mySqlCnn.Open();
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
                 mySqlCmd.CommandText = "SELECT * FROM membre WHERE courriel = @Courriel AND motDePasse = @mdp  ORDER BY ID";
-                mySqlCmd.Parameters.Add(new MySqlParameter("@mdp", hashedBytes.ToString()));
+                mySqlCmd.Parameters.Add(new MySqlParameter("@mdp", Encoding.UTF8.GetString(hashedBytes)));
                 mySqlCmd.Parameters.Add(new MySqlParameter("@Courriel", courriel));
                 mySqlDataReader = mySqlCmd.ExecuteReader();
                 while (mySqlDataReader.Read())
@@ -193,7 +193,7 @@ namespace TP3.BusinessLogic
                 if (mySqlDataReader != null)
                     mySqlDataReader.Close();
             }
-            return membre;
+             return membre;
         }
 
         public static void update(Membre membre, string cnnStr)

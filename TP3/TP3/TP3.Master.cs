@@ -19,11 +19,11 @@ namespace TP3
             {
                 lnkCancel.Visible = true;
                 lnkDeco.Visible = true;
-                lnkPublish.Visible = true;
                 lnkSearch.Visible = true;
                 lnkIns.Visible = false;
                 lnkConn.Visible = false;
-                lnkPropos.Visible = true;
+                lnkPublish.Visible = membre.IsDriver;
+                lnkPropos.Visible = membre.IsDriver;
             }
         }
     }
