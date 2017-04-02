@@ -95,10 +95,11 @@ namespace TP3.BusinessLogic
                         string mdp = mySqlDataReader["motDePasse"].ToString();
                         bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
                         bool isDriver = bool.Parse(mySqlDataReader["isDriver"].ToString());
+                        bool isFumeur = bool.Parse(mySqlDataReader["fumeur"].ToString());
+                        bool isAnimaux = bool.Parse(mySqlDataReader["animaux"].ToString());
+                        bool isEquipe = bool.Parse(mySqlDataReader["bienEquipe"].ToString());
 
-
-
-                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, mdp, isAdmin, isDriver));
+                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, "", isAdmin, isDriver, isFumeur, isAnimaux, isEquipe));
                     }
                 }
                 else if (id != 0)
@@ -119,8 +120,11 @@ namespace TP3.BusinessLogic
                         int ID = int.Parse(mySqlDataReader["ID"].ToString());
                         bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
                         bool isDriver = bool.Parse(mySqlDataReader["isDriver"].ToString());
+                        bool isFumeur = bool.Parse(mySqlDataReader["fumeur"].ToString());
+                        bool isAnimaux = bool.Parse(mySqlDataReader["animaux"].ToString());
+                        bool isEquipe = bool.Parse(mySqlDataReader["bienEquipe"].ToString());
 
-                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, "", isAdmin, isDriver));
+                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, "", isAdmin, isDriver,isFumeur,isAnimaux,isEquipe));
                     }
                 }
             }
@@ -170,9 +174,12 @@ namespace TP3.BusinessLogic
                     string mdp2 = mySqlDataReader["motDePasse"].ToString();
                     bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
                     bool isDriver = bool.Parse(mySqlDataReader["isDriver"].ToString());
+                    bool isFumeur = bool.Parse(mySqlDataReader["fumeur"].ToString());
+                    bool isAnimaux = bool.Parse(mySqlDataReader["animaux"].ToString());
+                    bool isEquipe = bool.Parse(mySqlDataReader["bienEquipe"].ToString());
 
 
-                    membre = new Membre(ID, nom, prenom, adresse, telephone, courriel2, mdp2, isAdmin, isDriver);
+                    membre = new Membre(ID, nom, prenom, adresse, telephone, courriel2, mdp2, isAdmin, isDriver,isFumeur,isAnimaux,isEquipe);
                 }
 
             }
@@ -202,8 +209,11 @@ namespace TP3.BusinessLogic
                 mySqlCmd.Parameters.Add(new MySqlParameter("@Tel", membre.Telephone));
                 mySqlCmd.Parameters.Add(new MySqlParameter("@isAdmin", membre.IsAdmin));
                 mySqlCmd.Parameters.Add(new MySqlParameter("@isDriver", membre.IsDriver));
+                mySqlCmd.Parameters.Add(new MySqlParameter("@isFumeur", membre.IsFumeur));
+                mySqlCmd.Parameters.Add(new MySqlParameter("@isAnimaux", membre.IsAnimaux));
+                mySqlCmd.Parameters.Add(new MySqlParameter("@isEquipe", membre.IsEquipe));
 
-                mySqlCmd.CommandText = ("UPDATE membre SET courriel=@Email, prenom=@Prenom, nom=@Nom, adresse=@Adresse, telephone=@Tel, isAdmin=@isAdmin, isDriver=@isDriver WHERE ID=@Id");
+                mySqlCmd.CommandText = ("UPDATE membre SET courriel=@Email, prenom=@Prenom, nom=@Nom, adresse=@Adresse, telephone=@Tel, isAdmin=@isAdmin, isDriver=@isDriver, fumeur=@isFumeur, animaux=@isAnimaux, bienEquipe=@isEquipe WHERE ID=@Id");
                 mySqlCmd.ExecuteNonQuery();
             }
             finally

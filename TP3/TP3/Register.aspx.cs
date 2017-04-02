@@ -25,9 +25,12 @@ namespace TP3
             string courriel = txtCourriel.Text;
             string mdp = txtMDP.Text;
             string mdp2 = txtMDP2.Text;
-            bool isDriver = conducteur.Checked;
+            bool isDriver = CheckBoxConducteur.Checked;
+            bool fumeur = CheckBoxFumeur.Checked;
+            bool animaux = CheckBoxAnimaux.Checked;
+            bool equipe = CheckBoxBienEquipe.Checked;
 
-            Membre membre = new Membre(0, nom, prenom, adresse, telephone, courriel, mdp, false, isDriver);
+            Membre membre = new Membre(0, nom, prenom, adresse, telephone, courriel, mdp, false, isDriver,fumeur,animaux,equipe);
             MembreFactory.Save(ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString, membre);
             Response.Redirect("Default.aspx");
         }
