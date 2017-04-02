@@ -1,8 +1,8 @@
-﻿using System.Security.Cryptography;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
+
 
 namespace Logements.BusinessLogic
 {
@@ -10,8 +10,8 @@ namespace Logements.BusinessLogic
     {
         public static void Save(string cnnStr, Membre membre)
         {
-            //Encryption du mot de passe en MD5
-            System.Security.Cryptography MD5CryptoServiceProvider MD5HASHER = new MD5CryptoServiceProvider();
+            //Encryption du mot de passe en MD5 
+            System.Security.Cryptography.MD5CryptoServiceProvider MD5HASHER = new System.Security.Cryptography.MD5CryptoServiceProvider();
             Byte[] hashedBytes;
             UTF8Encoding encoder = new UTF8Encoding();
             hashedBytes = MD5HASHER.ComputeHash(encoder.GetBytes(membre.Mdp));
@@ -25,6 +25,7 @@ namespace Logements.BusinessLogic
             mySqlCmd.Parameters.Add(new MySqlParameter("@Adresse", membre.Adresse));
             mySqlCmd.Parameters.Add(new MySqlParameter("@Telephone", membre.Telephone));
             mySqlCmd.Parameters.Add(new MySqlParameter("@Courriel", membre.Courriel));
+            mySqlCmd.Parameters.Add(new MySqlParameter("@IsDriver", membre.IsDriver));
             mySqlCmd.Parameters.Add(new MySqlParameter("@MDP", hashedBytes));
             mySqlCmd.CommandText = ("INSERT INTO membre (nom,prenom,adresse,telephone,courriel,motDePasse) VALUES(@Nom,@Prenom,@Adresse,@Telephone,@Courriel,@MDP)");
             mySqlCmd.ExecuteNonQuery();
@@ -54,17 +55,6 @@ namespace Logements.BusinessLogic
                     connexion.Close();
             }
             return isUnique;
-        }
-
-
-        public static void Accept(string cnnStr, int id)
-        {
-            MySqlConnection connexion = new MySqlConnection(cnnStr);
-            connexion.Open();
-            MySqlCommand mySqlCmd = connexion.CreateCommand();
-            mySqlCmd.Parameters.Add(new MySqlParameter("@Id", id));
-            mySqlCmd.CommandText = ("UPDATE membre SET isActive=true WHERE ID=@Id");
-            mySqlCmd.ExecuteNonQuery();
         }
 
         public static void Delete(string cnnStr, int id)
@@ -104,37 +94,11 @@ namespace Logements.BusinessLogic
                         string courriel = mySqlDataReader["courriel"].ToString();
                         string mdp = mySqlDataReader["motDePasse"].ToString();
                         bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
-                        bool isActive = bool.Parse(mySqlDataReader["isActive"].ToString());
-                        bool chgMDP = bool.Parse(mySqlDataReader["ChangeMDP"].ToString());
+                        bool isDriver = bool.Parse(mySqlDataReader["isDriver"].ToString());
 
 
 
-                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, mdp, isAdmin, isActive, chgMDP));
-                    }
-                }
-                else if (category == "notAccepted" && id == 0)
-                {
-                    MySqlCommand mySqlCmd = connexion.CreateCommand();
-                    mySqlCmd.CommandText = "SELECT * FROM membre WHERE isActive=false ORDER BY ID";
-
-                    mySqlDataReader = mySqlCmd.ExecuteReader();
-
-                    while (mySqlDataReader.Read())
-                    {
-                        int ID = int.Parse(mySqlDataReader["ID"].ToString());
-                        string nom = mySqlDataReader["nom"].ToString();
-                        string prenom = mySqlDataReader["prenom"].ToString();
-                        string adresse = mySqlDataReader["adresse"].ToString();
-                        string telephone = mySqlDataReader["telephone"].ToString();
-                        string courriel = mySqlDataReader["courriel"].ToString();
-                        string mdp = mySqlDataReader["motDePasse"].ToString();
-                        bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
-                        bool isActive = bool.Parse(mySqlDataReader["isActive"].ToString());
-                        bool chgMDP = bool.Parse(mySqlDataReader["ChangeMDP"].ToString());
-
-
-
-                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, mdp, isAdmin, isActive, chgMDP));
+                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, mdp, isAdmin, isDriver));
                     }
                 }
                 else if (id != 0)
@@ -154,12 +118,10 @@ namespace Logements.BusinessLogic
                         string adresse = mySqlDataReader["adresse"].ToString();
                         int ID = int.Parse(mySqlDataReader["ID"].ToString());
                         bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
-                        bool isActive = bool.Parse(mySqlDataReader["isActive"].ToString());
-                        bool chgMDP = bool.Parse(mySqlDataReader["ChangeMDP"].ToString());
+                        bool isDriver = bool.Parse(mySqlDataReader["isDriver"].ToString());
 
-                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, "", isAdmin, isActive, chgMDP));
+                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, "", isAdmin, isDriver));
                     }
-
                 }
             }
             finally
@@ -182,7 +144,7 @@ namespace Logements.BusinessLogic
 
 
             //Encryption du mot de passe en MD5
-            MD5CryptoServiceProvider MD5HASHER = new MD5CryptoServiceProvider();
+            System.Security.Cryptography.MD5CryptoServiceProvider MD5HASHER = new System.Security.Cryptography.MD5CryptoServiceProvider();
             Byte[] hashedBytes;
             UTF8Encoding encoder = new UTF8Encoding();
             hashedBytes = MD5HASHER.ComputeHash(encoder.GetBytes(mdp));
@@ -207,12 +169,10 @@ namespace Logements.BusinessLogic
                     string courriel2 = mySqlDataReader["courriel"].ToString();
                     string mdp2 = mySqlDataReader["motDePasse"].ToString();
                     bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
-                    bool isActive = bool.Parse(mySqlDataReader["isActive"].ToString());
-                    bool chgMDP = bool.Parse(mySqlDataReader["ChangeMDP"].ToString());
+                    bool isDriver = bool.Parse(mySqlDataReader["isDriver"].ToString());
 
 
-
-                    membre = new Membre(ID, nom, prenom, adresse, telephone, courriel2, mdp2, isAdmin, isActive, chgMDP);
+                    membre = new Membre(ID, nom, prenom, adresse, telephone, courriel2, mdp2, isAdmin, isDriver);
                 }
 
             }
@@ -241,62 +201,9 @@ namespace Logements.BusinessLogic
                 mySqlCmd.Parameters.Add(new MySqlParameter("@Adresse", membre.Adresse));
                 mySqlCmd.Parameters.Add(new MySqlParameter("@Tel", membre.Telephone));
                 mySqlCmd.Parameters.Add(new MySqlParameter("@isAdmin", membre.IsAdmin));
-                mySqlCmd.Parameters.Add(new MySqlParameter("@isActive", membre.IsActive));
+                mySqlCmd.Parameters.Add(new MySqlParameter("@isDriver", membre.IsDriver));
 
-                mySqlCmd.CommandText = ("UPDATE membre SET courriel=@Email, prenom=@Prenom, nom=@Nom, adresse=@Adresse, telephone=@Tel, isAdmin=@isAdmin, isActive=@isActive WHERE ID=@Id");
-                mySqlCmd.ExecuteNonQuery();
-            }
-            finally
-            {
-                if (connexion != null)
-                    connexion.Close();
-            }
-        }
-
-
-        public static void changePassword(int id, string newPwd, string cnnStr)
-        {
-            //Encryption du mot de passe en MD5
-            MD5CryptoServiceProvider MD5HASHER = new MD5CryptoServiceProvider();
-            Byte[] hashedBytes;
-            UTF8Encoding encoder = new UTF8Encoding();
-            hashedBytes = MD5HASHER.ComputeHash(encoder.GetBytes(newPwd));
-
-            MySqlConnection connexion = new MySqlConnection(cnnStr);
-            MySqlCommand mySqlCmd = connexion.CreateCommand();
-
-            try
-            {
-                connexion.Open();
-                mySqlCmd.Parameters.Add(new MySqlParameter("@Id", id));
-                mySqlCmd.Parameters.Add(new MySqlParameter("@PWD", hashedBytes));
-                mySqlCmd.CommandText = ("UPDATE membre SET motDePasse=@PWD, ChangeMDP=false WHERE ID=@Id");
-                mySqlCmd.ExecuteNonQuery();
-            }
-            finally
-            {
-                if (connexion != null)
-                    connexion.Close();
-            }
-        }
-
-        public static void changePassword(string email, string newPwd, string cnnStr)
-        {
-            //Encryption du mot de passe en MD5
-            MD5CryptoServiceProvider MD5HASHER = new MD5CryptoServiceProvider();
-            Byte[] hashedBytes;
-            UTF8Encoding encoder = new UTF8Encoding();
-            hashedBytes = MD5HASHER.ComputeHash(encoder.GetBytes(newPwd));
-
-            MySqlConnection connexion = new MySqlConnection(cnnStr);
-            MySqlCommand mySqlCmd = connexion.CreateCommand();
-
-            try
-            {
-                connexion.Open();
-                mySqlCmd.Parameters.Add(new MySqlParameter("@Courriel", email));
-                mySqlCmd.Parameters.Add(new MySqlParameter("@PWD", hashedBytes));
-                mySqlCmd.CommandText = ("UPDATE membre SET motDePasse=@PWD, ChangeMDP=true WHERE courriel=@Courriel");
+                mySqlCmd.CommandText = ("UPDATE membre SET courriel=@Email, prenom=@Prenom, nom=@Nom, adresse=@Adresse, telephone=@Tel, isAdmin=@isAdmin, isDriver=@isDriver WHERE ID=@Id");
                 mySqlCmd.ExecuteNonQuery();
             }
             finally
