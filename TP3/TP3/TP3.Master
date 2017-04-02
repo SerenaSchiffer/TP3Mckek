@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TP3.Master.cs" Inherits="TP3.TP3" %>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -38,11 +39,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li class="active"><a href="Default.aspx">Home</a></li>
-            <li><a href="PublishTrip.aspx">Publier un Voyage</a></li>
-            <li><a href="SearchTrips.aspx">Rechercher un Voyage</a></li>
-            <li><a href="CancelTrip.aspx">Annuler un Voyage</a></li>
+            <li><asp:HyperLink ID="lnkPublish" runat="server" NavigateUrl="PublishTrip.aspx" Visible="false">Publier un Voyage</asp:HyperLink></li>
+            <li><asp:HyperLink ID ="lnkSearch" runat="server" NavigateUrl="SearchTrips.aspx" Visible="false">Rechercher un Voyage</asp:HyperLink></li>
+            <li><asp:HyperLink ID ="lnkCancel" runat="server" NavigateUrl="CancelTrip.aspx"  Visible="false">Annuler un Voyage</asp:HyperLink></li>
           </ul>
-            <!-- <ul class="form-group input-group">
+          <!-- <ul class="form-group input-group">
                 <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">
@@ -58,7 +59,7 @@
                               <li><asp:HyperLink ID="lnkIns" runat="server" NavigateUrl="Register.aspx">Inscription</asp:HyperLink></li>
                               <li class="divider"></li>
                               <li><asp:HyperLink ID="lnkPropos" runat="server" NavigateUrl="Profil.aspx" Visible="false">Profil</asp:HyperLink></li>
-                              <li><asp:HyperLink ID="lnkDeco" runat="server" NavigateUrl="#?deco=y" Visible="false">Déconnexion</asp:HyperLink></li>
+                              <li><asp:HyperLink ID="lnkDeco" runat="server" NavigateUrl="Default.aspx?deco=1" Visible="false">Déconnexion</asp:HyperLink></li>
                              </ul>
                           </li>  
               </ul>
