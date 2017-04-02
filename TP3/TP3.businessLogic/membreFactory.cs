@@ -27,7 +27,10 @@ namespace TP3.BusinessLogic
             mySqlCmd.Parameters.Add(new MySqlParameter("@Courriel", membre.Courriel));
             mySqlCmd.Parameters.Add(new MySqlParameter("@IsDriver", membre.IsDriver));
             mySqlCmd.Parameters.Add(new MySqlParameter("@MDP", hashedBytes.ToString()));
-            mySqlCmd.CommandText = ("INSERT INTO membre (nom,prenom,adresse,telephone,courriel,motDePasse) VALUES(@Nom,@Prenom,@Adresse,@Telephone,@Courriel,@MDP)");
+            mySqlCmd.Parameters.Add(new MySqlParameter("@isFumeur", membre.IsFumeur));
+            mySqlCmd.Parameters.Add(new MySqlParameter("@isAnimaux", membre.IsAnimaux));
+            mySqlCmd.Parameters.Add(new MySqlParameter("@isEquipe", membre.IsEquipe));
+            mySqlCmd.CommandText = ("INSERT INTO membre (nom,prenom,adresse,telephone,courriel,motDePasse,isDriver,fumeur,animaux,bienEquipe) VALUES(@Nom,@Prenom,@Adresse,@Telephone,@Courriel,@MDP,@isDriver,@isFumeur,@isAnimaux,@isEquipe)");
             mySqlCmd.ExecuteNonQuery();
 
         }
