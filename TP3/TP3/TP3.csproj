@@ -145,6 +145,12 @@
       <DependentUpon>CancelTrip.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TP3.BusinessLogic\TP3.BusinessLogic.csproj">
+      <Project>{e35c0592-000c-4294-acfe-71094ae003a3}</Project>
+      <Name>TP3.BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
