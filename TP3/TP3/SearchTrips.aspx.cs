@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TP3.BusinessLogic;
 
 namespace TP3
 {
@@ -11,7 +12,10 @@ namespace TP3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Voyage[] chambres;
+            chambres = ChambreFactory.Get(((Logements)Master).CnnStr, 0, "", proprio.Id);
+            Repeater_Chambres.DataSource = chambres.ToArray();
+            Repeater_Chambres.DataBind();
         }
     }
 }

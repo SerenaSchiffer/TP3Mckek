@@ -15,6 +15,9 @@ namespace TP3.BusinessLogic
         private string _mdp;
         private bool _isAdmin;
         private bool _isDriver;
+        private bool _isFumeur;
+        private bool _isAnimaux;
+        private bool _isEquipe;
 
         public int Id
         {
@@ -76,9 +79,25 @@ namespace TP3.BusinessLogic
             get { return _isDriver; }
             set { _isDriver = value; }
         }
-        
 
-        public Membre(int id, string nom, string prenom, string adresse, string telephone, string courriel, string mdp, bool isAdmin, bool isDriver)
+        public bool IsFumeur
+        {
+            get { return _isFumeur; }
+            set { _isFumeur = value; }
+        }
+        public bool IsAnimaux
+        {
+            get { return _isAnimaux; }
+            set { _isAnimaux = value; }
+        }
+        public bool IsEquipe
+        {
+            get { return _isEquipe; }
+            set { _isEquipe = value; }
+        }
+
+
+        public Membre(int id, string nom, string prenom, string adresse, string telephone, string courriel, string mdp, bool isAdmin, bool isDriver, bool isFumeur,bool isAnimaux,bool isEquipe)
         {
             _id = id;
             _nom = nom;
@@ -89,6 +108,9 @@ namespace TP3.BusinessLogic
             _mdp = mdp;
             _isAdmin = isAdmin;
             _isDriver = isDriver;
+            _isFumeur = isFumeur;
+            _isAnimaux = isAnimaux;
+            _isEquipe = isEquipe;
         }
     }
 }

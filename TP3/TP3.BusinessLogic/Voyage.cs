@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP3.businessLogic
 {
-    class Voyage
+    public class Voyage
     {
         private int _id;
         private int _idConducteur;
