@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP3", "TP3\TP3.csproj", "{45D7121F-9B06-4910-8813-CB92EF50FCC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP3.businessLogic", "TP3.businessLogic\TP3.businessLogic.csproj", "{C79A0BF3-F075-47AC-83AA-11B10506E780}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP3.BusinessLogic", "TP3.BusinessLogic\TP3.BusinessLogic.csproj", "{E35C0592-000C-4294-ACFE-71094AE003A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{45D7121F-9B06-4910-8813-CB92EF50FCC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45D7121F-9B06-4910-8813-CB92EF50FCC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45D7121F-9B06-4910-8813-CB92EF50FCC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C79A0BF3-F075-47AC-83AA-11B10506E780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C79A0BF3-F075-47AC-83AA-11B10506E780}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C79A0BF3-F075-47AC-83AA-11B10506E780}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C79A0BF3-F075-47AC-83AA-11B10506E780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35C0592-000C-4294-ACFE-71094AE003A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35C0592-000C-4294-ACFE-71094AE003A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35C0592-000C-4294-ACFE-71094AE003A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35C0592-000C-4294-ACFE-71094AE003A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
