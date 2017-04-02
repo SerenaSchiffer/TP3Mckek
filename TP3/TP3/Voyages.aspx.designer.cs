@@ -85,13 +85,13 @@ namespace TP3 {
         protected global::System.Web.UI.WebControls.CheckBox chkEquipe;
         
         /// <summary>
-        /// Contrôle TextBox1.
+        /// Contrôle txtReserve.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtReserve;
         
         /// <summary>
         /// Contrôle btnReserver.
@@ -110,5 +110,14 @@ namespace TP3 {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
+        /// Contrôle NotEnoughPlace.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NotEnoughPlace;
     }
 }

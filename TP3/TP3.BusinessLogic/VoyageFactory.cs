@@ -132,6 +132,27 @@ namespace TP3.BusinessLogic
             return voyage;
         }
 
+        public static void UpdatePassager(string cnnStr, int nbPassager, int ID)
+        {
+            MySqlConnection connexion = new MySqlConnection(cnnStr);
+            MySqlCommand mySqlCmd = connexion.CreateCommand();
+
+            try
+            {
+                connexion.Open();
+                mySqlCmd.Parameters.Add(new MySqlParameter("@Id", ID));
+                mySqlCmd.Parameters.Add(new MySqlParameter("@nbPassager", nbPassager));
+
+                mySqlCmd.CommandText = ("UPDATE voyage SET nbPassagers=@nbPassager WHERE ID=@Id");
+                mySqlCmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (connexion != null)
+                    connexion.Close();
+            }
+        }
+
         public static Voyage[] GetAll (string cnnStr)
         {
             List<Voyage> voyages = new List<Voyage>();
@@ -243,6 +264,16 @@ namespace TP3.BusinessLogic
             }
 
             return voyages.ToArray();
+        }
+
+        public static void Delete(string cnnStr, int id)
+        {
+            MySqlConnection connexion = new MySqlConnection(cnnStr);
+            connexion.Open();
+            MySqlCommand mySqlCmd = connexion.CreateCommand();
+            mySqlCmd.Parameters.Add(new MySqlParameter("@Id", id));
+            mySqlCmd.CommandText = ("DELETE FROM voyage WHERE ID=@Id");
+            mySqlCmd.ExecuteNonQuery();
         }
 
     }
