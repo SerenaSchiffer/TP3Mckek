@@ -12,9 +12,10 @@ namespace TP3
     {
         Voyage voyage;
         int ID = 0;
+        Membre membre;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Membre membre = Session[TP3.SESSIONMEMBRE] as Membre;
+            membre = Session[TP3.SESSIONMEMBRE] as Membre;
             if (membre != null)
             {
                 if (membre.IsAdmin)
@@ -47,6 +48,8 @@ namespace TP3
             {
                 int passager = voyage.NbPassagers - int.Parse(txtReserve.Text);
                 VoyageFactory.UpdatePassager(System.Configuration.ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString, passager, ID);
+                Reservation reservation = new Reservation(membre.Id, ID, int.Parse(txtReserve.Text));
+                ReservationFactory.Save(System.Configuration.ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString, reservation);
                 Response.Redirect("SearchTrips.aspx");
             }
             else

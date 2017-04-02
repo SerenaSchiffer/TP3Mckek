@@ -30,3 +30,12 @@ CREATE TABLE Voyage
   nbPassagers int NOT NULL,
   FOREIGN KEY(IDConducteur) REFERENCES Membre(ID)
 );
+
+CREATE TABLE Reservation
+(
+  IDVoyage int NOT NULL,
+  IDPassager int NOT NULL,
+  nbPassager int NOT NULL,
+  FOREIGN KEY(IDPassager) REFERENCES Membre(ID),
+  FOREIGN KEY(IDVoyage) REFERENCES Voyage(ID)
+);

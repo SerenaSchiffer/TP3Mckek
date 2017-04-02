@@ -70,6 +70,7 @@
     <Content Include="packages.config" />
     <Content Include="Profil.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Reservations.aspx" />
     <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\styles.css" />
     <Content Include="TP3.Master" />
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservations.aspx.cs">
+      <DependentUpon>Reservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reservations.aspx.designer.cs">
+      <DependentUpon>Reservations.aspx</DependentUpon>
     </Compile>
     <Compile Include="TP3.Master.cs">
       <DependentUpon>TP3.Master</DependentUpon>

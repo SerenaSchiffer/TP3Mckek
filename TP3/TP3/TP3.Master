@@ -58,6 +58,7 @@
                               <li><asp:HyperLink ID="lnkConn" runat="server" NavigateUrl="Login.aspx">Se connecter</asp:HyperLink></li>
                               <li><asp:HyperLink ID="lnkIns" runat="server" NavigateUrl="Register.aspx">Inscription</asp:HyperLink></li>
                               <li class="divider"></li>
+                                <li><asp:HyperLink ID="lnkReservation" runat="server" NavigateUrl="Reservations.aspx" Visible="false">Mes réservations</asp:HyperLink></li>
                               <li><asp:HyperLink ID="lnkPropos" runat="server" NavigateUrl="Profil.aspx" Visible="false">Profil</asp:HyperLink></li>
                               <li><asp:HyperLink ID="lnkDeco" runat="server" NavigateUrl="Default.aspx?deco=1" Visible="false">Déconnexion</asp:HyperLink></li>
                              </ul>

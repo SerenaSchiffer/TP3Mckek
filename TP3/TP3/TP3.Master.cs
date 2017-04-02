@@ -24,6 +24,7 @@ namespace TP3
                 lnkConn.Visible = false;
                 lnkPublish.Visible = membre.IsDriver;
                 lnkPropos.Visible = true;
+                lnkReservation.Visible = true;
             }
         }
     }
