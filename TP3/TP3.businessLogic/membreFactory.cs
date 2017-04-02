@@ -105,6 +105,31 @@ namespace TP3.BusinessLogic
                         membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, "", isAdmin, isDriver, isFumeur, isAnimaux, isEquipe));
                     }
                 }
+                else if (category == "drivers" && id == 0)
+                {
+                    MySqlCommand mySqlCmd = connexion.CreateCommand();
+                    mySqlCmd.CommandText = "SELECT * FROM membre WHERE isDriver = 1 ORDER BY ID";
+
+                    mySqlDataReader = mySqlCmd.ExecuteReader();
+
+                    while (mySqlDataReader.Read())
+                    {
+                        int ID = int.Parse(mySqlDataReader["ID"].ToString());
+                        string nom = mySqlDataReader["nom"].ToString();
+                        string prenom = mySqlDataReader["prenom"].ToString();
+                        string adresse = mySqlDataReader["adresse"].ToString();
+                        string telephone = mySqlDataReader["telephone"].ToString();
+                        string courriel = mySqlDataReader["courriel"].ToString();
+                        string mdp = mySqlDataReader["motDePasse"].ToString();
+                        bool isAdmin = bool.Parse(mySqlDataReader["isAdmin"].ToString());
+                        bool isDriver = bool.Parse(mySqlDataReader["isDriver"].ToString());
+                        bool isFumeur = bool.Parse(mySqlDataReader["fumeur"].ToString());
+                        bool isAnimaux = bool.Parse(mySqlDataReader["animaux"].ToString());
+                        bool isEquipe = bool.Parse(mySqlDataReader["bienEquipe"].ToString());
+
+                        membre.Add(new Membre(ID, nom, prenom, adresse, telephone, courriel, "", isAdmin, isDriver, isFumeur, isAnimaux, isEquipe));
+                    }
+                }
                 else if (id != 0)
                 {
                     MySqlCommand mySqlCmd = connexion.CreateCommand();
