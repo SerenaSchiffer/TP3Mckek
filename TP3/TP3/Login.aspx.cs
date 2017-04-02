@@ -1,4 +1,6 @@
 ﻿using System;
+using TP3.BusinessLogic;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,7 +20,16 @@ namespace TP3
         {
             string courriel = txtCourriel.Text;
             string mdp = txtMDP.Text;
-            Response.Redirect("Default.aspx");
+            Membre membre = MembreFactory.Login(courriel, mdp, ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString);
+            if (membre != null)
+            {
+                Session[TP3.SESSIONMEMBRE] = membre;
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                loginFailed.Visible = true;
+            }
         }
     }
 }

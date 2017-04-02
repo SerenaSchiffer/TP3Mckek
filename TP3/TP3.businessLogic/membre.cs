@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Logements.BusinessLogic
+namespace TP3.BusinessLogic
 {
     public class Membre
     {

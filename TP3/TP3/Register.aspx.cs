@@ -1,4 +1,6 @@
 ﻿using System;
+using TP3.BusinessLogic;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,9 +25,10 @@ namespace TP3
             string courriel = txtCourriel.Text;
             string mdp = txtMDP.Text;
             string mdp2 = txtMDP2.Text;
+            bool isDriver = conducteur.Checked;
 
-            //Membre membre = new Membre(0, nom, prenom, adresse, telephone, courriel, mdp, false, false, false);
-            //MembreFactory.Save(((Logements)Master).CnnStr, membre);
+            Membre membre = new Membre(0, nom, prenom, adresse, telephone, courriel, mdp, false, isDriver);
+            MembreFactory.Save(ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString, membre);
             Response.Redirect("Default.aspx");
         }
     }

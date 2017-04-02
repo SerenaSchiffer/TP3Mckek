@@ -14,6 +14,4 @@
                     <asp:Button ID="Envoyer" runat="server" Text="Envoyer" class="login login-submit" Width="100px" OnClick="Envoyer_Click"/>
                    </div>
               </div>
-
-					       
 </asp:Content>

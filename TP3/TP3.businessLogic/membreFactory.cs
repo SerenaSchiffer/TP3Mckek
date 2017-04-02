@@ -4,7 +4,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 
 
-namespace Logements.BusinessLogic
+namespace TP3.BusinessLogic
 {
     public class MembreFactory
     {
@@ -26,7 +26,7 @@ namespace Logements.BusinessLogic
             mySqlCmd.Parameters.Add(new MySqlParameter("@Telephone", membre.Telephone));
             mySqlCmd.Parameters.Add(new MySqlParameter("@Courriel", membre.Courriel));
             mySqlCmd.Parameters.Add(new MySqlParameter("@IsDriver", membre.IsDriver));
-            mySqlCmd.Parameters.Add(new MySqlParameter("@MDP", hashedBytes));
+            mySqlCmd.Parameters.Add(new MySqlParameter("@MDP", hashedBytes.ToString()));
             mySqlCmd.CommandText = ("INSERT INTO membre (nom,prenom,adresse,telephone,courriel,motDePasse) VALUES(@Nom,@Prenom,@Adresse,@Telephone,@Courriel,@MDP)");
             mySqlCmd.ExecuteNonQuery();
 
@@ -156,7 +156,7 @@ namespace Logements.BusinessLogic
                 mySqlCnn.Open();
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
                 mySqlCmd.CommandText = "SELECT * FROM membre WHERE courriel = @Courriel AND motDePasse = @mdp  ORDER BY ID";
-                mySqlCmd.Parameters.Add(new MySqlParameter("@mdp", hashedBytes));
+                mySqlCmd.Parameters.Add(new MySqlParameter("@mdp", hashedBytes.ToString()));
                 mySqlCmd.Parameters.Add(new MySqlParameter("@Courriel", courriel));
                 mySqlDataReader = mySqlCmd.ExecuteReader();
                 while (mySqlDataReader.Read())
