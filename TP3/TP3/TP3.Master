@@ -38,9 +38,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li class="active"><a href="Default.aspx">Home</a></li>
-            <li><a href="#">Publier un Voyage</a></li>
-            <li><a href="#">Rechercher un Voyage</a></li>
-            <li><a href="#">Annuler un Voyage</a></li>
+            <li><a href="PublishTrip.aspx">Publier un Voyage</a></li>
+            <li><a href="SearchTrips.aspx">Rechercher un Voyage</a></li>
+            <li><a href="CancelTrip.aspx">Annuler un Voyage</a></li>
           </ul>
             <!-- <ul class="form-group input-group">
                 <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>

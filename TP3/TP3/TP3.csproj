@@ -73,6 +73,9 @@
     <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\styles.css" />
     <Content Include="TP3.Master" />
+    <Content Include="PublishTrip.aspx" />
+    <Content Include="SearchTrips.aspx" />
+    <Content Include="CancelTrip.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -119,6 +122,27 @@
     </Compile>
     <Compile Include="TP3.Master.designer.cs">
       <DependentUpon>TP3.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PublishTrip.aspx.cs">
+      <DependentUpon>PublishTrip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublishTrip.aspx.designer.cs">
+      <DependentUpon>PublishTrip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchTrips.aspx.cs">
+      <DependentUpon>SearchTrips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchTrips.aspx.designer.cs">
+      <DependentUpon>SearchTrips.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CancelTrip.aspx.cs">
+      <DependentUpon>CancelTrip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CancelTrip.aspx.designer.cs">
+      <DependentUpon>CancelTrip.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
