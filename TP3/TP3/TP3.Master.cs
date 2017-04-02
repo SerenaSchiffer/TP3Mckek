@@ -12,6 +12,9 @@ namespace TP3
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            string logout = Request["deco"];
+            if (logout != null)
+                return;//TODO: Log-out user
         }
     }
 }

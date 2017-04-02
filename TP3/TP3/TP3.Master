@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<meta charset="utf-8"/>
-		<title>Chambres à louer</title>
+		<title>Transport en Commun</title>
 		<meta name="generator" content="Bootply"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 		<link href="Styles/bootstrap.min.css" rel="stylesheet"/>
@@ -37,17 +37,19 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Messages</a></li>
+            <li class="active"><a href="Default.aspx">Home</a></li>
+            <li><a href="#">Publier un Voyage</a></li>
+            <li><a href="#">Rechercher un Voyage</a></li>
+            <li><a href="#">Annuler un Voyage</a></li>
           </ul>
-            <ul class="form-group input-group">
+            <!-- <ul class="form-group input-group">
                 <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </span>        
-                </ul>
+          </ul> -->
           <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i>Mon compte</a>
@@ -56,7 +58,7 @@
                               <li><asp:HyperLink ID="lnkIns" runat="server" NavigateUrl="Register.aspx">Inscription</asp:HyperLink></li>
                               <li class="divider"></li>
                               <li><asp:HyperLink ID="lnkPropos" runat="server" NavigateUrl="Profil.aspx" Visible="false">Profil</asp:HyperLink></li>
-                              <li><asp:HyperLink ID="lnkDeco" runat="server" NavigateUrl="Default.aspx?deco=y" Visible="false">Déconnexion</asp:HyperLink></li>
+                              <li><asp:HyperLink ID="lnkDeco" runat="server" NavigateUrl="#?deco=y" Visible="false">Déconnexion</asp:HyperLink></li>
                              </ul>
                           </li>  
               </ul>
@@ -75,7 +77,7 @@
 </form>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p>Par Pierre-Andre Savard, Rafael Cote et Emile Fortin</p>
 </footer>
 
 </body>

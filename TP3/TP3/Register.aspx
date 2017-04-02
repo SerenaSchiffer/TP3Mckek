@@ -10,6 +10,7 @@
                     <asp:TextBox ID="txtCourriel" runat="server" placeholder="Courriel"></asp:TextBox><br />
                     <asp:TextBox ID="txtMDP" runat="server" TextMode="Password" placeholder="Mot de passe"></asp:TextBox><br />
                     <asp:TextBox ID="txtMDP2" runat="server" TextMode="Password" placeholder="Confirmation du mot de passe"></asp:TextBox><br />
+                    <asp:RadioButton ID="conducteur" runat="server" /> Je serai un conducteur<br />
                     <asp:Button ID="Envoyer" runat="server" Text="Envoyer" class="login login-submit" Width="100px" OnClick="Envoyer_Click"/>
                    </div>
               </div>
