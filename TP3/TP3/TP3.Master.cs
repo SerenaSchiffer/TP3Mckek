@@ -9,6 +9,7 @@ namespace TP3
 {
     public partial class TP3 : System.Web.UI.MasterPage
     {
+        public const string SESSIONMEMBRE = "Membre";
         protected void Page_Load(object sender, EventArgs e)
         {
 

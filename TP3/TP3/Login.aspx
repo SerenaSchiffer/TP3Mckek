@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TP3.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TP3.Login" %>
 <asp:Content ID="DefaultContent" ContentPlaceHolderID="main" runat="server">
+    <div class="alert alert-danger col col-sm-9" runat="server" visible="false" id="loginFailed" role="alert">Votre courriel ou nom d'utilisateur est incorrect.</div>
         <div class="row">
                   <div class="login-card">
 					<h1>Connexion</h1><br/>
