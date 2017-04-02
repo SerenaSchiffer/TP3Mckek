@@ -23,7 +23,7 @@ namespace TP3
                 lnkIns.Visible = false;
                 lnkConn.Visible = false;
                 lnkPublish.Visible = membre.IsDriver;
-                lnkPropos.Visible = membre.IsDriver;
+                lnkPropos.Visible = true;
             }
         }
     }
