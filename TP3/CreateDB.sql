@@ -1,4 +1,4 @@
-use logement
+use trajets
 
 CREATE TABLE Membre
 (
