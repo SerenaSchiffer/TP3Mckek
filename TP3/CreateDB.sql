@@ -27,5 +27,6 @@ CREATE TABLE Voyage
   animaux boolean NOT NULL DEFAULT false,
   fumeur boolean NOT NULL DEFAULT false,
   bienEquipe boolean NOT NULL DEFAULT false,
+  nbPassagers int NOT NULL,
   FOREIGN KEY(IDConducteur) REFERENCES Membre(ID)
 );
