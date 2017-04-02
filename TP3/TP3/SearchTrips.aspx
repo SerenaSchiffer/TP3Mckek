@@ -13,7 +13,6 @@
                                 <b>prix</b> : <%# Eval("Prix")%>$/mois<br/>
 					            <b>Depart</b> : <%# Eval("Depart")%><br/>
                                 <b>Destination</b> : <%# Eval("Destination")%><br/>                          
-                                <b>Depart</b> : <%# Eval("Depart")%><br/>
                                 <b>Heure de depart </b> : <%# Eval("HeureDepart")%><br/>
                                 <b>Nombre de passagers </b> : <%# Eval("NbPassagers")%><br/>
                             </div>
@@ -23,6 +22,7 @@
                                 <b>Place pour des bagages :</b><input type="checkbox" <%# Convert.ToBoolean(Eval("BienEquipe")) ? "checked" : "" %> /><br />
                             </div>
                         </div>
+                        <input type="button"  class="modif btn btn-info" value="Afficher le voyage" onclick="window.location='Voyages.aspx?ID=<%# Eval("ID")%>'"></input>
 				    </p>
             </div>  
         </ItemTemplate>
