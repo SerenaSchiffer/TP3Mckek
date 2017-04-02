@@ -85,6 +85,53 @@ namespace TP3.BusinessLogic
             return voyages.ToArray();
         }
 
+        public static Voyage GetByID(string cnnStr,int id)
+        {
+            Voyage voyage = null;
+
+            MySqlConnection connexion = null;
+            MySqlDataReader mySqlDataReader = null;
+
+            try
+            {
+                connexion = new MySqlConnection(cnnStr);
+                connexion.Open();
+
+                MySqlCommand command = connexion.CreateCommand();
+
+                command.Parameters.Add(new MySqlParameter("@ID", id));
+
+                command.CommandText = "SELECT * FROM voyage WHERE ID = @ID";
+                mySqlDataReader = command.ExecuteReader();
+
+                while (mySqlDataReader.Read())
+                {
+                    int Id = int.Parse(mySqlDataReader["ID"].ToString());
+                    int lIdConducteur = int.Parse(mySqlDataReader["IDConducteur"].ToString());
+                    double prix = double.Parse(mySqlDataReader["prix"].ToString());
+                    string lDepart = mySqlDataReader["depart"].ToString();
+                    string lDestination = mySqlDataReader["destination"].ToString();
+                    DateTime heureDepart = (DateTime)mySqlDataReader["heureDepart"];
+                    bool lAnimaux = bool.Parse(mySqlDataReader["animaux"].ToString());
+                    bool lFumeur = bool.Parse(mySqlDataReader["fumeur"].ToString());
+                    bool lBienEquipe = bool.Parse(mySqlDataReader["bienEquipe"].ToString());
+                    int nbPassagers = int.Parse(mySqlDataReader["NbPassagers"].ToString());
+
+                    voyage = (new Voyage(Id, lIdConducteur, prix, lDepart, lDestination, heureDepart, lAnimaux, lFumeur, lBienEquipe, nbPassagers));
+                }
+            }
+            finally
+            {
+                if (mySqlDataReader != null)
+                    mySqlDataReader.Close();
+
+                if (connexion != null)
+                    connexion.Close();
+            }
+
+            return voyage;
+        }
+
         public static Voyage[] GetAll (string cnnStr)
         {
             List<Voyage> voyages = new List<Voyage>();

@@ -84,6 +84,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Voyages.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +144,13 @@
     </Compile>
     <Compile Include="CancelTrip.aspx.designer.cs">
       <DependentUpon>CancelTrip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Voyages.aspx.cs">
+      <DependentUpon>Voyages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Voyages.aspx.designer.cs">
+      <DependentUpon>Voyages.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
