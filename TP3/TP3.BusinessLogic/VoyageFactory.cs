@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TP3.businessLogic
 {
-    class VoyageFactory
+    public class VoyageFactory
     {
         public static void Save(string connexionString, Voyage voyage)
         {
