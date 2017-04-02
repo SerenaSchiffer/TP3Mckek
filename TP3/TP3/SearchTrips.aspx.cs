@@ -13,9 +13,9 @@ namespace TP3
         protected void Page_Load(object sender, EventArgs e)
         {
             Voyage[] voyages;
-            chambres = ChambreFactory.Get(((Logements)Master).CnnStr, 0, "", proprio.Id);
-            Repeater_Chambres.DataSource = chambres.ToArray();
-            Repeater_Chambres.DataBind();
+            voyages = VoyageFactory.GetAll(System.Configuration.ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString);
+            Repeater_Voyages.DataSource = voyages.ToArray();
+            Repeater_Voyages.DataBind();
         }
     }
 }

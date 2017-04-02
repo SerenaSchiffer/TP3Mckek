@@ -109,7 +109,7 @@ namespace TP3.BusinessLogic
                     double prix = double.Parse(mySqlDataReader["prix"].ToString());
                     string depart = mySqlDataReader["depart"].ToString();
                     string destination = mySqlDataReader["destination"].ToString();
-                    DateTime heureDepart = DateTime.Parse(mySqlDataReader["heureDepart"].ToString();
+                    DateTime heureDepart = DateTime.Parse(mySqlDataReader["heureDepart"].ToString());
                     bool fumeur = bool.Parse(mySqlDataReader["fumeur"].ToString());
                     bool animaux = bool.Parse(mySqlDataReader["animaux"].ToString());
                     bool bienEquipe = bool.Parse(mySqlDataReader["bienEquipe"].ToString());
