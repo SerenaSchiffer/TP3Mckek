@@ -1,20 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using TP3.BusinessLogic;
+using System;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace TP3
 {
     public partial class TP3 : System.Web.UI.MasterPage
     {
         public const string SESSIONMEMBRE = "Membre";
+        private Membre membre;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string logout = Request["deco"];
+            string logout = Request.QueryString["deco"];
             if (logout != null)
-                return;//TODO: Log-out user
+                Session[TP3.SESSIONMEMBRE] = null;
+            membre = Session[SESSIONMEMBRE] as Membre;
+            
+            if (membre != null) // Ajuster UI pour membre login
+            {
+                lnkCancel.Visible = true;
+                lnkDeco.Visible = true;
+                lnkPublish.Visible = true;
+                lnkSearch.Visible = true;
+                lnkIns.Visible = false;
+                lnkConn.Visible = false;
+                lnkPropos.Visible = true;
+            }
         }
     }
 }
