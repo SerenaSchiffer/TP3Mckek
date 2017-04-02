@@ -12,7 +12,7 @@ namespace TP3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Voyage[] chambres;
+            Voyage[] voyages;
             chambres = ChambreFactory.Get(((Logements)Master).CnnStr, 0, "", proprio.Id);
             Repeater_Chambres.DataSource = chambres.ToArray();
             Repeater_Chambres.DataBind();

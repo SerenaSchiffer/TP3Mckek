@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TP3.businessLogic
+namespace TP3.BusinessLogic
 {
     public class VoyageFactory
     {
@@ -71,6 +71,51 @@ namespace TP3.businessLogic
                     int nbPassagers = int.Parse(mySqlDataReader["NbPassagers"].ToString());
 
                     voyages.Add(new Voyage(id, lIdConducteur, prix, lDepart, lDestination, heureDepart, lAnimaux, lFumeur, lBienEquipe, nbPassagers));
+                }
+            }
+            finally
+            {
+                if (mySqlDataReader != null)
+                    mySqlDataReader.Close();
+
+                if (connexion != null)
+                    connexion.Close();
+            }
+
+            return voyages.ToArray();
+        }
+
+        public static Voyage[] GetAll (string cnnStr)
+        {
+            List<Voyage> voyages = new List<Voyage>();
+
+            MySqlConnection connexion = null;
+            MySqlDataReader mySqlDataReader = null;
+
+            try
+            {
+                connexion = new MySqlConnection(cnnStr);
+                connexion.Open();
+                MySqlCommand mySqlCmd = connexion.CreateCommand();
+
+                mySqlCmd.CommandText = "SELECT * FROM membre ORDER BY ID";
+
+                mySqlDataReader = mySqlCmd.ExecuteReader();
+
+                while (mySqlDataReader.Read())
+                {
+                    int ID = int.Parse(mySqlDataReader["ID"].ToString());
+                    int IDConducteur = int.Parse(mySqlDataReader["IDConducteur"].ToString());
+                    double prix = double.Parse(mySqlDataReader["prix"].ToString());
+                    string depart = mySqlDataReader["depart"].ToString();
+                    string destination = mySqlDataReader["destination"].ToString();
+                    DateTime heureDepart = DateTime.Parse(mySqlDataReader["heureDepart"].ToString();
+                    bool fumeur = bool.Parse(mySqlDataReader["fumeur"].ToString());
+                    bool animaux = bool.Parse(mySqlDataReader["animaux"].ToString());
+                    bool bienEquipe = bool.Parse(mySqlDataReader["bienEquipe"].ToString());
+                    int nbPassagers = int.Parse(mySqlDataReader["nbPassagers"].ToString());
+
+                    voyages.Add(new Voyage(ID, IDConducteur, prix, depart, destination, heureDepart, animaux, fumeur, bienEquipe, nbPassagers));
                 }
             }
             finally

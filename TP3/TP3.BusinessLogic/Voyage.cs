@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TP3.businessLogic
+namespace TP3.BusinessLogic
 {
     public class Voyage
     {
