@@ -17,7 +17,6 @@ namespace TP3.BusinessLogic
                 connexion.Open();
 
                 MySqlCommand command = connexion.CreateCommand();
-                command.Parameters.Add(new MySqlParameter("@Id", voyage.Id));
                 command.Parameters.Add(new MySqlParameter("@IdConducteur", voyage.IdConducteur));
                 command.Parameters.Add(new MySqlParameter("@Prix", voyage.Prix));
                 command.Parameters.Add(new MySqlParameter("@Depart", voyage.Depart));
@@ -28,7 +27,8 @@ namespace TP3.BusinessLogic
                 command.Parameters.Add(new MySqlParameter("@BienEquipe", voyage.BienEquipe));
                 command.Parameters.Add(new MySqlParameter("@NbPassagers", voyage.NbPassagers));
 
-                command.CommandText = ("INSERT INTO voyage (ID, IDConducteur, prix, depart, destination, heureDepart, animaux, fumeur, bienEquipe, NbPassager) VALUES (@ID, @IDConducteur, @Prix, @Depart, @Destination, @HeureDepart, @Animaux, @Fumeur, @BienEquipe, @NbPassager");
+                command.CommandText = ("INSERT INTO voyage (IDConducteur, prix, depart, destination, heureDepart, animaux, fumeur, bienEquipe, nbPassagers)" + 
+                    "VALUES (@IDConducteur, @Prix, @Depart, @Destination, @HeureDepart, @Animaux, @Fumeur, @BienEquipe, @NbPassagers)");
                 command.ExecuteNonQuery();
             }
             finally
