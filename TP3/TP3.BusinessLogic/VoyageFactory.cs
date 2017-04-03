@@ -201,6 +201,7 @@ namespace TP3.BusinessLogic
         public static Voyage[] Search(string connexionString, bool fumeur, bool animaux, bool bienEquipe, string depart, string destination,
                                       DateTime heureDebut, DateTime heureFin)
         {
+            bool isEnter = false;
             List<Voyage> voyages = new List<Voyage>();
 
             MySqlConnection connexion = null;
@@ -221,19 +222,44 @@ namespace TP3.BusinessLogic
                 command.Parameters.Add(new MySqlParameter("@HeureDebut", heureDebut));
                 command.Parameters.Add(new MySqlParameter("@HeureFin", heureFin));
 
-                string commandText = "SELECT * FROM voyage WHERE animaux = @Animaux AND fumeur = @Fumeur AND bienEquipe = @BienEquipe ";
+                string commandText = "SELECT * FROM voyage WHERE (animaux = @Animaux AND fumeur = @Fumeur AND bienEquipe = @BienEquipe) OR ";
                 if (depart != String.Empty)
-                    commandText += "AND depart = @Depart ";
+                {
+                    commandText += "depart = @Depart ";
+                    isEnter = true;
+                }
 
                 if (destination != String.Empty)
-                    commandText += "AND destination = @Destination ";
+                {
+                    if (!isEnter)
+                        commandText += "destination = @Destination ";
+                    else
+                        commandText += "AND destination = @Destination ";
+                }
+                    
 
-                if (heureDebut != null && heureFin != null)
-                    commandText += "AND heureDepart BETWEEN @HeureDebut AND @HeureFin ";
-                else if (heureDebut != null && heureFin == null)
-                    commandText += "AND heureDepart >= @HeureDebut ";
-                else if (heureDebut == null && heureFin != null)
-                    commandText += "AND heureDepart <= @HeureFin";
+                DateTime nullDate = new DateTime(1, 1, 1, 0, 0, 0);
+                if (heureDebut != nullDate && heureFin != nullDate)
+                {
+                    if (!isEnter)
+                        commandText += "heureDepart BETWEEN @HeureDebut AND @HeureFin ";
+                    else
+                        commandText += "AND heureDepart BETWEEN @HeureDebut AND @HeureFin ";
+                }
+                else if (heureDebut != nullDate && heureFin == nullDate)
+                {
+                    if (!isEnter)
+                        commandText += "heureDepart >= @HeureDebut ";
+                    else
+                        commandText += "AND heureDepart >= @HeureDebut ";
+                }
+                else if (heureDebut == nullDate && heureFin != nullDate)
+                {
+                    if (!isEnter)
+                        commandText += "heureDepart <= @HeureFin";
+                    else
+                        commandText += "AND heureDepart <= @HeureFin";
+                }
 
                 command.CommandText = commandText;
                 mySqlDataReader = command.ExecuteReader();
