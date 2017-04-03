@@ -8,15 +8,23 @@ namespace TP3.BusinessLogic
 {
     public class Reservation
     {
+        private int _id;
         private int _idPassager;
         private int _idVoyage;
         private int _nbPassager;
 
+
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         public int IdPassager
         {
             get { return _idPassager; }
             set { _idPassager = value; }
         }
+
 
         public int IdVoyage
         {
@@ -30,8 +38,9 @@ namespace TP3.BusinessLogic
             set { _nbPassager = value; }
         }
 
-        public Reservation(int idPassager,int idVoyage, int nbPassager)
+        public Reservation(int id,int idPassager,int idVoyage, int nbPassager)
         {
+            _id = id;
             _idPassager = idPassager;
             _idVoyage = idVoyage;
             _nbPassager = nbPassager;

@@ -33,6 +33,7 @@ CREATE TABLE Voyage
 
 CREATE TABLE Reservation
 (
+  ID int PRIMARY KEY AUTO_INCREMENT,
   IDVoyage int NOT NULL,
   IDPassager int NOT NULL,
   nbPassager int NOT NULL,
