@@ -16,7 +16,7 @@
                                 <b>Place pour des bagages :</b><asp:CheckBox ID="chkEquipe" runat="server" />
                             </div>
                         </div>
-                        <asp:TextBox ID="txtReserve" runat="server" TextMode="Number"></asp:TextBox> <asp:Button ID="btnReserver" runat="server" Text="Réserver" OnClick="btnReserver_Click" />  
+                        <asp:TextBox ID="txtReserve" runat="server" TextMode="Number" Text="1"></asp:TextBox> <asp:Button ID="btnReserver" runat="server" Text="Réserver" OnClick="btnReserver_Click" />  
                         <asp:Button ID="btnDelete" runat="server" Text="Annuler le voyage" Visible="false" OnClick="btnDelete_Click"/>
     <div class="alert alert-danger col col-sm-9" runat="server" visible="false" id="NotEnoughPlace" role="alert">Il n'y a pas asez de places disponibles</div>
 </asp:Content>

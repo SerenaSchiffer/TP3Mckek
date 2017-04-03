@@ -48,7 +48,7 @@ namespace TP3
             {
                 int passager = voyage.NbPassagers - int.Parse(txtReserve.Text);
                 VoyageFactory.UpdatePassager(System.Configuration.ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString, passager, ID);
-                Reservation reservation = new Reservation(membre.Id, ID, int.Parse(txtReserve.Text));
+                Reservation reservation = new Reservation(0,membre.Id, ID, int.Parse(txtReserve.Text));
                 ReservationFactory.Save(System.Configuration.ConfigurationManager.ConnectionStrings["cnnStr"].ConnectionString, reservation);
                 Response.Redirect("SearchTrips.aspx");
             }
